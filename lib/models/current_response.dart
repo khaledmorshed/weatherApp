@@ -1,30 +1,27 @@
-class CurrentWeatherResponse {
-  CurrentWeatherResponse({
-      this.coord, 
-      this.weather, 
-      this.base, 
-      this.main, 
-      this.visibility, 
-      this.wind, 
-      this.clouds, 
-      this.dt, 
-      this.sys, 
-      this.timezone, 
-      this.id, 
-      this.name, 
-      this.cod,});
+class CurrentResponse {
+  CurrentResponse({
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,});
 
-  CurrentWeatherResponse.fromJson(dynamic json) {
-    
+  CurrentResponse.fromJson(dynamic json) {
     coord = json['coord'] != null ? Coord.fromJson(json['coord']) : null;
-    
     if (json['weather'] != null) {
       weather = [];
       json['weather'].forEach((v) {
         weather?.add(Weather.fromJson(v));
       });
     }
-    
     base = json['base'];
     main = json['main'] != null ? Main.fromJson(json['main']) : null;
     visibility = json['visibility'];
@@ -37,7 +34,6 @@ class CurrentWeatherResponse {
     name = json['name'];
     cod = json['cod'];
   }
-  
   Coord? coord;
   List<Weather>? weather;
   String? base;
@@ -51,40 +47,35 @@ class CurrentWeatherResponse {
   num? id;
   String? name;
   num? cod;
-  
-CurrentWeatherResponse copyWith({ 
-  Coord? coord,
-  List<Weather>? weather,
-  String? base,
-  Main? main,
-  num? visibility,
-  Wind? wind,
-  Clouds? clouds,
-  num? dt,
-  Sys? sys,
-  num? timezone,
-  num? id,
-  String? name,
-  num? cod,
-}) => CurrentWeatherResponse(
-  coord: coord ?? this.coord,
-  weather: weather ?? this.weather,
-  base: base ?? this.base,
-  main: main ?? this.main,
-  visibility: visibility ?? this.visibility,
-  wind: wind ?? this.wind,
-  clouds: clouds ?? this.clouds,
-  dt: dt ?? this.dt,
-  sys: sys ?? this.sys,
-  timezone: timezone ?? this.timezone,
-  id: id ?? this.id,
-  name: name ?? this.name,
-  cod: cod ?? this.cod,
-);
-
+  CurrentResponse copyWith({  Coord? coord,
+    List<Weather>? weather,
+    String? base,
+    Main? main,
+    num? visibility,
+    Wind? wind,
+    Clouds? clouds,
+    num? dt,
+    Sys? sys,
+    num? timezone,
+    num? id,
+    String? name,
+    num? cod,
+  }) => CurrentResponse(  coord: coord ?? this.coord,
+    weather: weather ?? this.weather,
+    base: base ?? this.base,
+    main: main ?? this.main,
+    visibility: visibility ?? this.visibility,
+    wind: wind ?? this.wind,
+    clouds: clouds ?? this.clouds,
+    dt: dt ?? this.dt,
+    sys: sys ?? this.sys,
+    timezone: timezone ?? this.timezone,
+    id: id ?? this.id,
+    name: name ?? this.name,
+    cod: cod ?? this.cod,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    
     if (coord != null) {
       map['coord'] = coord?.toJson();
     }
@@ -115,14 +106,13 @@ CurrentWeatherResponse copyWith({
 
 }
 
-
 class Sys {
   Sys({
-      this.type, 
-      this.id, 
-      this.country, 
-      this.sunrise, 
-      this.sunset,});
+    this.type,
+    this.id,
+    this.country,
+    this.sunrise,
+    this.sunset,});
 
   Sys.fromJson(dynamic json) {
     type = json['type'];
@@ -136,17 +126,17 @@ class Sys {
   String? country;
   num? sunrise;
   num? sunset;
-Sys copyWith({  num? type,
-  num? id,
-  String? country,
-  num? sunrise,
-  num? sunset,
-}) => Sys(  type: type ?? this.type,
-  id: id ?? this.id,
-  country: country ?? this.country,
-  sunrise: sunrise ?? this.sunrise,
-  sunset: sunset ?? this.sunset,
-);
+  Sys copyWith({  num? type,
+    num? id,
+    String? country,
+    num? sunrise,
+    num? sunset,
+  }) => Sys(  type: type ?? this.type,
+    id: id ?? this.id,
+    country: country ?? this.country,
+    sunrise: sunrise ?? this.sunrise,
+    sunset: sunset ?? this.sunset,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['type'] = type;
@@ -159,18 +149,17 @@ Sys copyWith({  num? type,
 
 }
 
-
 class Clouds {
   Clouds({
-      this.all,});
+    this.all,});
 
   Clouds.fromJson(dynamic json) {
     all = json['all'];
   }
   num? all;
-Clouds copyWith({  num? all,
-}) => Clouds(  all: all ?? this.all,
-);
+  Clouds copyWith({  num? all,
+  }) => Clouds(  all: all ?? this.all,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['all'] = all;
@@ -179,27 +168,22 @@ Clouds copyWith({  num? all,
 
 }
 
-
 class Wind {
   Wind({
-      this.speed, 
-      this.deg,});
+    this.speed,
+    this.deg,});
 
   Wind.fromJson(dynamic json) {
     speed = json['speed'];
     deg = json['deg'];
   }
-  
   num? speed;
   num? deg;
-  
-Wind copyWith({ 
-  num? speed,
-  num? deg,
-}) => Wind(  speed: speed ?? this.speed,
-  deg: deg ?? this.deg,
-);
-
+  Wind copyWith({  num? speed,
+    num? deg,
+  }) => Wind(  speed: speed ?? this.speed,
+    deg: deg ?? this.deg,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['speed'] = speed;
@@ -209,15 +193,14 @@ Wind copyWith({
 
 }
 
-
 class Main {
   Main({
-      this.temp, 
-      this.feelsLike, 
-      this.tempMin, 
-      this.tempMax, 
-      this.pressure, 
-      this.humidity,});
+    this.temp,
+    this.feelsLike,
+    this.tempMin,
+    this.tempMax,
+    this.pressure,
+    this.humidity,});
 
   Main.fromJson(dynamic json) {
     temp = json['temp'];
@@ -227,28 +210,25 @@ class Main {
     pressure = json['pressure'];
     humidity = json['humidity'];
   }
-  
   num? temp;
   num? feelsLike;
   num? tempMin;
   num? tempMax;
   num? pressure;
   num? humidity;
-  
-Main copyWith({  
-  num? temp,
-  num? feelsLike,
-  num? tempMin,
-  num? tempMax,
-  num? pressure,
-  num? humidity,
-}) => Main(  temp: temp ?? this.temp,
-  feelsLike: feelsLike ?? this.feelsLike,
-  tempMin: tempMin ?? this.tempMin,
-  tempMax: tempMax ?? this.tempMax,
-  pressure: pressure ?? this.pressure,
-  humidity: humidity ?? this.humidity,
-);
+  Main copyWith({  num? temp,
+    num? feelsLike,
+    num? tempMin,
+    num? tempMax,
+    num? pressure,
+    num? humidity,
+  }) => Main(  temp: temp ?? this.temp,
+    feelsLike: feelsLike ?? this.feelsLike,
+    tempMin: tempMin ?? this.tempMin,
+    tempMax: tempMax ?? this.tempMax,
+    pressure: pressure ?? this.pressure,
+    humidity: humidity ?? this.humidity,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['temp'] = temp;
@@ -264,10 +244,10 @@ Main copyWith({
 
 class Weather {
   Weather({
-      this.id, 
-      this.main, 
-      this.description, 
-      this.icon,});
+    this.id,
+    this.main,
+    this.description,
+    this.icon,});
 
   Weather.fromJson(dynamic json) {
     id = json['id'];
@@ -279,15 +259,15 @@ class Weather {
   String? main;
   String? description;
   String? icon;
-Weather copyWith({  num? id,
-  String? main,
-  String? description,
-  String? icon,
-}) => Weather(  id: id ?? this.id,
-  main: main ?? this.main,
-  description: description ?? this.description,
-  icon: icon ?? this.icon,
-);
+  Weather copyWith({  num? id,
+    String? main,
+    String? description,
+    String? icon,
+  }) => Weather(  id: id ?? this.id,
+    main: main ?? this.main,
+    description: description ?? this.description,
+    icon: icon ?? this.icon,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -301,8 +281,8 @@ Weather copyWith({  num? id,
 
 class Coord {
   Coord({
-      this.lon, 
-      this.lat,});
+    this.lon,
+    this.lat,});
 
   Coord.fromJson(dynamic json) {
     lon = json['lon'];
@@ -310,11 +290,11 @@ class Coord {
   }
   num? lon;
   num? lat;
-Coord copyWith({  num? lon,
-  num? lat,
-}) => Coord(  lon: lon ?? this.lon,
-  lat: lat ?? this.lat,
-);
+  Coord copyWith({  num? lon,
+    num? lat,
+  }) => Coord(  lon: lon ?? this.lon,
+    lat: lat ?? this.lat,
+  );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['lon'] = lon;

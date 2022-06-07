@@ -42,7 +42,7 @@ dependencies:
   shared_preferences:
   #get, post,
   http:
-  # address conversion lat long theke street, house or street, house theke lat long
+  # address conversion. latitude and longitude to String address, String address to latitude longitude
   geocoding:
 
 
