@@ -18,13 +18,18 @@ class WeatherProvider with ChangeNotifier{
 
   bool get hasDataLoaded => currentResponse != null && forecastResponse != null ;
 
+  void reload() {
+    _getWeatherData();
+  }
+
   void _getWeatherData() {
     _getCurrentWeatherData();
     _getForecastData();
   }
 
   void _getCurrentWeatherData() async{
-    final weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=metric&appid=$weatherApiKey';
+    final unit = await tempUnit;
+    final weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&units=$unit&appid=$weatherApiKey';
     try{
       //we get value in json inside of response.
       final  response = await get(Uri.parse(weatherUrl));
@@ -42,7 +47,8 @@ class WeatherProvider with ChangeNotifier{
   }
 
   void _getForecastData() async{
-    final foreCastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&appid=$weatherApiKey';
+    final unit = await tempUnit;
+    final foreCastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&units=$unit&appid=$weatherApiKey';
     try{
       //we get value in json inside of response.
        final  response = await get(Uri.parse(foreCastUrl));
@@ -58,4 +64,10 @@ class WeatherProvider with ChangeNotifier{
       throw error;
     }
   }
+
+  Future<String> get tempUnit async {
+    //metric = celcious and imperial = farenheight
+    return await getTempStatus() ? 'imperial' : 'metric';
+  }
 }
+

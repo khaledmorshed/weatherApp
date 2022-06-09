@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:weather/globals/date_convertion.dart';
 import 'package:weather/globals/get_user_location.dart';
 import 'package:weather/providers/weather_provider.dart';
+import 'package:weather/screens/settings_screen.dart';
 
 import '../globals/constans_values.dart';
 
@@ -50,7 +51,9 @@ class _WeatherHomeScreenState extends State<WeatherHomeScreen> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              _getUserLocation();
+            },
               icon: Icon(Icons.my_location),),
           IconButton(
             onPressed: ()async{
@@ -61,7 +64,7 @@ class _WeatherHomeScreenState extends State<WeatherHomeScreen> {
             },
             icon: Icon(Icons.search),),
           IconButton(
-            onPressed: (){},
+            onPressed: ()=>Navigator.pushNamed(context, SettingsScreen.path),
             icon: Icon(Icons.settings),),
         ],
       ),
